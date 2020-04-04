@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Grid, TextField } from '@material-ui/core';
+import firebase from 'components/Firebase';
 
 const Signup = () => {
   const [form, setForm] = React.useState({
@@ -10,6 +11,18 @@ const Signup = () => {
 
   const handleChange = (prop) => (event) => {
     setForm({ ...form, [prop]: event.target.value });
+  };
+
+  const onRegister = async () => {
+    try {
+      await firebase.register({
+        email: form.email,
+        password: form.password,
+        role: 'user',
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -53,7 +66,7 @@ const Signup = () => {
             fullWidth
             variant="contained"
             color="primary"
-            onClick={() => {}}
+            onClick={onRegister}
           >
             Register
           </Button>

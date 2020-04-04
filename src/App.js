@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 
 import Home from './pages/Home.js';
-import DashboardLogin from './pages/DashboardLogin';
+import Dashboard from './pages/Dashboard';
+import Login from './pages/Login';
 import Signup from './pages/Signup';
 
 import ButtonAppBar from './components/AppBar';
@@ -14,7 +15,8 @@ function App() {
         <ButtonAppBar />
         <Switch>
           <Route exact path="/" component={(props) => <Home />} />
-          <Route path="/dashboard" component={(props) => <DashboardLogin />} />
+          <Route path="/dashboard" component={(props) => <Dashboard />} />
+          <Route path="/login" component={(props) => <Login />} />
           <Route path="/signup" component={(props) => <Signup />} />
         </Switch>
       </Router>
