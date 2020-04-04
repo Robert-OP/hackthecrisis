@@ -57,7 +57,10 @@ export default function ButtonAppBar() {
           </Typography>
           {pages.map((page, index) => {
             return (
-              <Button color='inherit' component={Link} to={page.route}>
+              <Button
+                color='inherit'
+                component={Link}
+                to={process.env.PUBLIC_URL + page.route}>
                 {page.name}
               </Button>
             );
