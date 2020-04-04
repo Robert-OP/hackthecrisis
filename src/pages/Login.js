@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Box, Button, TextField } from '@material-ui/core';
 import firebase from 'components/Firebase';
 
@@ -7,7 +7,7 @@ const Login = () => {
     email: '',
     password: '',
   });
-  const [type, setType] = useState('user');
+  const [type, setType] = React.useState('user');
 
   const handleChange = (prop) => (event) => {
     setForm({ ...form, [prop]: event.target.value });
