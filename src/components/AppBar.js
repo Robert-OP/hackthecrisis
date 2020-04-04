@@ -54,6 +54,7 @@ export default function ButtonAppBar() {
           {pages.map((page, index) => {
             return (
               <Button
+                key={"button-" + index}
                 color='inherit'
                 component={Link}
                 to={process.env.PUBLIC_URL + page.route}>
