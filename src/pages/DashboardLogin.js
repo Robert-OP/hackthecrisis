@@ -1,28 +1,62 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
+import TextField from '@material-ui/core/TextField';
 
-class DashboardLogin extends Component {
-  render() {
-    return (
-      <div id="dashboard-login">
-        <h3>Log in</h3>
-        <div>
+function DashboardLogin() {
+  const [type, setType] = useState('user');
+
+  const onTypeChange = () => {
+    type === 'user' ? setType('doctor') : setType('user');
+  };
+
+  return (
+    <Box id="dashboard-login">
+      <Box>
+        <h2>Log in</h2>
+        <Box>
           <form id="dashboardLoginForm">
-            <input type="text" name="email" placeholder="Insert email" />
-            <input type="text" name="password" placeholder="Insert password" />
-            <div>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+
+            <Box>
+              <br />
               <Button variant="contained" color="primary">
                 Log in
               </Button>
-              <Button variant="contained" color="secondary">
-                I am a doctor
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => onTypeChange()}
+              >
+                {type === 'user' ? 'I am a doctor' : 'I am a user'}
               </Button>
-            </div>
+            </Box>
           </form>
-        </div>
-      </div>
-    );
-  }
+        </Box>
+      </Box>
+    </Box>
+  );
 }
 
 export default DashboardLogin;
