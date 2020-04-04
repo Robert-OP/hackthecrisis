@@ -5,14 +5,14 @@ import './App.css';
 import Home from 'pages/Home.js';
 import Dashboard from 'pages/Dashboard';
 import Login from 'pages/Login';
+import Navigation from 'components/Navigation';
 import Signup from 'pages/Signup';
 
-import ButtonAppBar from './components/AppBar';
 const App = () => {
   return (
     <div className="App">
       <Router>
-        <ButtonAppBar />
+        <Navigation />
         <Switch>
           <Route exact path="/" component={(props) => <Home />} />
           <Route path="/dashboard" component={(props) => <Dashboard />} />
