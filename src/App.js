@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 
 import Home from "./pages/Home.js";
@@ -14,18 +14,10 @@ function App() {
       <Router>
         <ButtonAppBar />
         <Switch>
-          <Route exact path='/'>
-            <Home />
-          </Route>
-          <Route exact path='/dashboard'>
-            <DashboardLogin />
-          </Route>
-          <Route exact path='/signup'>
-            <Signup />
-          </Route>
-          <Route exact path='/login'>
-            <Login />
-          </Route>
+          <Route exact path='/' component={props => <Home />} />
+          <Route path='/dashboard' component={props => <DashboardLogin />} />
+          <Route path='/signup' component={props => <Signup />} />
+          <Route path='/login' component={props => <Login />} />
         </Switch>
       </Router>
     </div>
