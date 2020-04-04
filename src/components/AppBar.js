@@ -29,16 +29,12 @@ export default function ButtonAppBar() {
       route: "/"
     },
     {
-      name: "Dashboard",
+      name: "My dashboard",
       route: "/dashboard"
     },
     {
       name: "Signup",
       route: "/signup"
-    },
-    {
-      name: "Login",
-      route: "/login"
     }
   ];
   return (
