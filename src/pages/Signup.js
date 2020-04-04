@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Grid, TextField } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 import firebase from 'components/Firebase';
 
 const Signup = () => {
@@ -8,6 +9,7 @@ const Signup = () => {
     password: '',
     confirmPassword: '',
   });
+  const history = useHistory();
 
   const handleChange = (prop) => (event) => {
     setForm({ ...form, [prop]: event.target.value });
@@ -20,6 +22,7 @@ const Signup = () => {
         password: form.password,
         role: 'user',
       });
+      history.push('/dashboard');
     } catch (error) {
       console.error(error);
     }
