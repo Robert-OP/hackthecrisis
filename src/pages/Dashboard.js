@@ -1,8 +1,7 @@
 import React from 'react';
-import { Box } from '@material-ui/core';
+import { Box, Button, Grid, Typography } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import Alert from '../components/Alert';
-import { Grid, Button } from '@material-ui/core';
 
 const Dashboard = (props) => {
   const [user, setUser] = React.useState(localStorage.getItem('user') || '');
@@ -27,8 +26,28 @@ const Dashboard = (props) => {
   }
   // console.log(user);
   return (
-    <Box id="dashboard-login">
-      <Grid container direction="row" justify="center" alignItems="center">
+    <Grid container>
+      <Grid
+        item
+        xs={6}
+        style={{
+          backgroundColor: '#EAF5F2',
+        }}
+      >
+        <Box py={2}>
+          <Typography variant={'h4'}>Prescriptions & Notes</Typography>
+        </Box>
+        <Typography variant={'body1'}>
+          Hello, you haven't been prescribed any medication or received a
+          doctor's note yet. Please, fill in the form or wait until your
+          screening is processed.
+        </Typography>
+      </Grid>
+      <Grid item xs={6}>
+        <Box py={2}>
+          <Typography variant={'h4'}>Consultations</Typography>
+        </Box>
+        <Typography variant={'body1'}></Typography>
         {props.handleScreening ? (
           <Alert style={{ marginTop: '1rem' }} severity="info">
             <Box>
@@ -49,9 +68,7 @@ const Dashboard = (props) => {
           ''
         )}
       </Grid>
-      <h1>Dashboard</h1>
-      <h2>{user ? userObj.user.email : 'No user found'}</h2>
-    </Box>
+    </Grid>
   );
 };
 
