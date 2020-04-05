@@ -9,8 +9,11 @@ import Navigation from 'components/Navigation';
 import Signup from 'pages/Signup';
 import SignOut from 'pages/SignOut';
 
+export const AppContext = React.createContext();
+
 const App = () => {
   const [auth, setAuth] = React.useState(0);
+  const [showLogin, setShowLogin] = React.useState(true);
 
   const onAuth = (element) => {
     return setAuth(element);
@@ -18,28 +21,41 @@ const App = () => {
 
   return (
     <div className="App">
-      <Router>
-        <Navigation isAuth={auth} />
-        <Switch>
-          <Route exact path="/" component={(props) => <Home />} />
-          <Route
-            path="/dashboard"
-            component={(props) => <Dashboard handleAuth={onAuth} />}
-          />
-          <Route
-            path="/login"
-            component={(props) => <Login handleAuth={onAuth} />}
-          />
-          <Route
-            path="/signup"
-            component={(props) => <Signup handleAuth={onAuth} />}
-          />
-          <Route
-            path="/signout"
-            component={(props) => <SignOut handleAuth={onAuth} />}
-          />
-        </Switch>
-      </Router>
+      <AppContext.Provider
+        value={{
+          state: {
+            auth,
+            showLogin,
+          },
+          actions: {
+            onAuth,
+            setShowLogin,
+          },
+        }}
+      >
+        <Router>
+          <Navigation isAuth={auth} />
+          <Switch>
+            <Route exact path="/" component={(props) => <Home />} />
+            <Route
+              path="/dashboard"
+              component={(props) => <Dashboard handleAuth={onAuth} />}
+            />
+            <Route
+              path="/login"
+              component={(props) => <Login handleAuth={onAuth} />}
+            />
+            <Route
+              path="/signup"
+              component={(props) => <Signup handleAuth={onAuth} />}
+            />
+            <Route
+              path="/signout"
+              component={(props) => <SignOut handleAuth={onAuth} />}
+            />
+          </Switch>
+        </Router>
+      </AppContext.Provider>
     </div>
   );
 };

@@ -4,10 +4,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,59 +21,48 @@ const useStyles = makeStyles((theme) => ({
 
 const Navigation = (props) => {
   const classes = useStyles();
+  const history = useHistory();
+
   let pages = [];
   let { isAuth } = props;
 
   // console.log(user);
-  if (isAuth) {
-    pages = [
-      {
-        name: 'Home',
-        route: '/',
-      },
-      {
-        name: 'My dashboard',
-        route: '/dashboard',
-      },
-      {
-        name: 'Sign out',
-        route: '/signout',
-      },
-    ];
-  } else {
-    pages = [
-      {
-        name: 'Home',
-        route: '/',
-      },
-      {
-        name: 'My dashboard',
-        route: '/login',
-      },
-      {
-        name: 'Signup',
-        route: '/signup',
-      },
-    ];
-  }
+  pages = [
+    {
+      name: 'Home',
+      route: '/',
+    },
+    {
+      name: 'My dashboard',
+      route: '/dashboard',
+    },
+    {
+      name: 'Sign out',
+      route: '/signout',
+    },
+  ];
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
             aria-label="menu"
           >
             <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
+          </IconButton> */}
+          <Typography
+            variant="h6"
+            className={classes.title}
+            onClick={() => history.push('/')}
+          >
             COVIDoc
           </Typography>
           {pages.map((page, index) => {
-            return (
+            return !isAuth ? (
               <Button
                 key={'button-' + index}
                 color="inherit"
@@ -84,7 +71,7 @@ const Navigation = (props) => {
               >
                 {page.name}
               </Button>
-            );
+            ) : null;
           })}
         </Toolbar>
       </AppBar>

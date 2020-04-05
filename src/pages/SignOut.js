@@ -1,9 +1,10 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { Box } from '@material-ui/core';
 
-const SignOut = (props) => {
-  props.handleAuth(false);
-  localStorage.clear();
+const SignOut = () => {
+  const history = useHistory();
+  history.push('/');
   // console.log(user);
   return (
     <Box id="dashboard-login">
