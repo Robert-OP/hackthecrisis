@@ -38,9 +38,8 @@ const Signup = (props) => {
           password: form.password,
           role: 'user',
         });
-        props.handleAuth(false);
-        setForm({ error: '' });
-        history.push('/login');
+        // props.handleAuth(false);
+        history.push('/dashboard');
       } catch (error) {
         console.error(error);
         setForm({
