@@ -21,26 +21,44 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Navigation = () => {
+const Navigation = (props) => {
   const classes = useStyles();
-  const pages = [
-    {
-      name: 'Home',
-      route: '/',
-    },
-    {
-      name: 'My dashboard',
-      route: '/dashboard',
-    },
-    {
-      name: 'Login',
-      route: '/login',
-    },
-    {
-      name: 'Signup',
-      route: '/signup',
-    },
-  ];
+  let pages = [];
+  let { isAuth } = props;
+
+  // console.log(user);
+  if (isAuth) {
+    pages = [
+      {
+        name: 'Home',
+        route: '/',
+      },
+      {
+        name: 'My dashboard',
+        route: '/dashboard',
+      },
+      {
+        name: 'Sign out',
+        route: '/signout',
+      },
+    ];
+  } else {
+    pages = [
+      {
+        name: 'Home',
+        route: '/',
+      },
+      {
+        name: 'My dashboard',
+        route: '/login',
+      },
+      {
+        name: 'Signup',
+        route: '/signup',
+      },
+    ];
+  }
+
   return (
     <div className={classes.root}>
       <AppBar position="static">

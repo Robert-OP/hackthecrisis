@@ -1,10 +1,17 @@
 import React from 'react';
 import { Box, Button, Grid, TextField } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 import firebase from 'components/Firebase';
 import Alert from '../components/Alert';
 
-const Signup = () => {
+const useStyles = makeStyles((theme) => ({
+  signupContainer: {
+    maxWidth: '420px',
+  },
+}));
+
+const Signup = (props) => {
   const [form, setForm] = React.useState({
     email: '',
     password: '',
@@ -12,6 +19,7 @@ const Signup = () => {
     error: '',
   });
   const history = useHistory();
+  const classes = useStyles();
 
   const handleChange = (prop) => (event) => {
     setForm({ ...form, [prop]: event.target.value });
@@ -26,9 +34,9 @@ const Signup = () => {
           password: form.password,
           role: 'user',
         });
+        props.handleAuth(false);
         setForm({ error: '' });
-        console.log(response);
-        history.push('/dashboard');
+        history.push('/login');
       } catch (error) {
         console.error(error);
         setForm({
@@ -60,7 +68,7 @@ const Signup = () => {
         )}
       </Grid>
       <Grid container direction="row" justify="center" alignItems="center">
-        <form>
+        <form className={classes.signupContainer}>
           <h2>Sign up</h2>
           <TextField
             variant="outlined"

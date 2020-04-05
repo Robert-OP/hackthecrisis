@@ -5,12 +5,17 @@ import Grid from '@material-ui/core/Grid';
 import firebase from 'components/Firebase';
 import Alert from '../components/Alert';
 
-const Login = () => {
+const Login = (props) => {
   const [form, setForm] = React.useState({
     email: '',
     password: '',
     error: '',
   });
+
+  const handleAuth = (newValue) => {
+    props.handleAuth(newValue);
+  };
+
   const [type, setType] = React.useState('user');
   const history = useHistory();
 
@@ -26,9 +31,12 @@ const Login = () => {
     try {
       const response = await firebase.login(form.email, form.password);
       setForm({ error: '' });
+      handleAuth(true);
+      localStorage.setItem('user', JSON.stringify(response));
       console.log(response);
       history.push('/dashboard');
     } catch (error) {
+      handleAuth(false);
       // console.error(error);
       setForm({ error: error, email: '', password: '' });
     }
@@ -38,9 +46,10 @@ const Login = () => {
     <Box>
       <Grid container direction="row" justify="center" alignItems="center">
         {form.error ? (
-          <Alert style={{ marginTop: '1rem' }} severity="error">
-            {form.error.message}
-          </Alert>
+          <Box>
+            <br />
+            <Alert severity="error">{form.error.message}</Alert>
+          </Box>
         ) : (
           ''
         )}
