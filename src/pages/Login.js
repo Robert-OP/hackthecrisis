@@ -19,6 +19,10 @@ const Login = (props) => {
   const [type, setType] = React.useState('user');
   const history = useHistory();
 
+  if (localStorage.getItem('user')) {
+    history.push('/dashboard');
+  }
+
   const handleChange = (prop) => (event) => {
     setForm({ ...form, [prop]: event.target.value });
   };

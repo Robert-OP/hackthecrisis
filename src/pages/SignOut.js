@@ -3,7 +3,7 @@ import { Box } from '@material-ui/core';
 
 const SignOut = (props) => {
   props.handleAuth(false);
-
+  localStorage.clear();
   // console.log(user);
   return (
     <Box id="dashboard-login">

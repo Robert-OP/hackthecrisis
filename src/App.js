@@ -22,7 +22,10 @@ const App = () => {
         <Navigation isAuth={auth} />
         <Switch>
           <Route exact path="/" component={(props) => <Home />} />
-          <Route path="/dashboard" component={(props) => <Dashboard />} />
+          <Route
+            path="/dashboard"
+            component={(props) => <Dashboard handleAuth={onAuth} />}
+          />
           <Route
             path="/login"
             component={(props) => <Login handleAuth={onAuth} />}
