@@ -1,11 +1,15 @@
 import React from 'react';
-import { Box, Button, TextField } from '@material-ui/core';
+import { Box, Button, Grid, TextField } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
-import Grid from '@material-ui/core/Grid';
 import firebase from 'components/Firebase';
-import Alert from '../components/Alert';
+import Alert from 'components/Alert';
+import { AppContext } from 'App';
 
-const Login = (props) => {
+const Login = () => {
+  const {
+    actions: { onAuth, setShowLogin },
+    state: { auth },
+  } = React.useContext(AppContext);
   const [form, setForm] = React.useState({
     email: '',
     password: '',
@@ -13,15 +17,15 @@ const Login = (props) => {
   });
 
   const handleAuth = (newValue) => {
-    props.handleAuth(newValue);
+    onAuth(newValue);
   };
 
   const [type, setType] = React.useState('user');
   const history = useHistory();
 
-  if (localStorage.getItem('user')) {
-    history.push('/dashboard');
-  }
+  // if (localStorage.getItem('user')) {
+  //   history.push('/dashboard');
+  // }
 
   const handleChange = (prop) => (event) => {
     setForm({ ...form, [prop]: event.target.value });
@@ -113,6 +117,15 @@ const Login = (props) => {
                   onClick={() => onTypeChange()}
                 >
                   {type === 'user' ? 'I am a doctor' : 'I am a user'}
+                </Button>
+                <br />
+                <Button
+                  fullWidth
+                  variant="contained"
+                  color="secondary"
+                  onClick={() => setShowLogin(false)}
+                >
+                  Sign up
                 </Button>
               </Grid>
             </form>
