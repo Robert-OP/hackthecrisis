@@ -5,29 +5,3 @@ body {
   height: 100%;
 }
 
-#dashboard-login {
-  height: 91vh;
-  width: 90%;
-  margin: 0 auto;
-  text-align: center;
-  display: flex;
-  align-items: center;
-}
-
-.button-select {
-  padding: 10px 20px;
-  border-radius: 2px;
-}
-
-#dashboardLoginForm input {
-  width: 80%;
-  margin: .6em auto;
-  padding: 5px 10px;
-  height: 26px;
-}
-
-#dashboardLoginForm button {
-  width: 60%;
-  padding: 10px 20px;
-  margin: 5px;
-}
