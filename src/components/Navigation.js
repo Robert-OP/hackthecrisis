@@ -36,10 +36,10 @@ const Navigation = (props) => {
       name: 'My dashboard',
       route: '/dashboard',
     },
-    {
-      name: 'Sign out',
-      route: '/signout',
-    },
+    // {
+    //   name: 'Sign out',
+    //   route: '/signout',
+    // },
   ];
 
   return (
@@ -62,7 +62,7 @@ const Navigation = (props) => {
             COVIDoc
           </Typography>
           {pages.map((page, index) => {
-            return !isAuth ? (
+            return (
               <Button
                 key={'button-' + index}
                 color="inherit"

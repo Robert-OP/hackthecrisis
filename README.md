@@ -1,31 +1,48 @@
 # CoviDoc - hackthecrisis
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Live solution: https://covidoc-7c58b.web.app/
 
-## Available Scripts
+### Track your daily symptoms of COVID-19.
 
-In the project directory, you can run:
+CoviDoc helps you track your symptoms easily while connecting
+you to doctors and hospitals in your area. Get advice, keep
+track of the symptoms data, forecast your health condition,
+and receive the right diagnostics right on COVIDoc - you will
+receive the doctor's diagnosis and advice digitally in the
+COVIDoc dashboard.
 
-### `yarn start`
+### How it Works?
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Track your symptoms in a few steps and keep the stats of them.
+It is easier than ever to add your symptoms of COVID-19 and to
+help doctors discover patterns of how the illness occurs, and
+inform about the status of your health in real time from your
+smartphone , tablet, or a computer. Adding the data on COVIDoc
+is easy.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### First, describe your symptoms
 
-### `yarn build`
+Log in to COVIDoc and click ‘’Add my symptoms’’ button. Simply
+enter your symptoms on a scale from 1 to 5 and a short
+description of your medical request or current status. The app
+uses your data in order to create infographics, discover
+specific patterns in regards to your health evolution during
+the COVID-19 period and informs you in case there is a further
+step to be taken, either sending a COVID-19 test, connect you
+with one of the doctors available, send a GP, or connect you
+with the closest hospital in your area. The appointments are
+covered through your health card and you will be assigned to a
+hospital/doctor accordingly based on space availability.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Next, you will hear from a doctor
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Once a doctor reviews your symptoms, depending on your answers
+about current health conditions, they can assist you through
+our app. If they are available, you will be contacted through
+a notification that will require your personal approval to
+continue in receiving the diagnostic. If the symptoms are
+considered as normal, and they won’t in any case put your
+current health condition in danger, or do not seem to predict
+an evolution of the potential virus, then you will receive a
+notification stating that everything is fine and that the
+monitoring process will still be ongoing.
