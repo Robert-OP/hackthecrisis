@@ -71,7 +71,7 @@ const Navigation = (props) => {
               >
                 {page.name}
               </Button>
-            ) : null;
+            );
           })}
         </Toolbar>
       </AppBar>
