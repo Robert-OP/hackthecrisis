@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 import firebase from 'components/Firebase';
 import Alert from '../components/Alert';
+import { AppContext } from 'App';
 
 const useStyles = makeStyles((theme) => ({
   signupContainer: {
@@ -12,6 +13,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Signup = (props) => {
+  const {
+    actions: { setShowLogin },
+  } = React.useContext(AppContext);
   const [form, setForm] = React.useState({
     email: '',
     password: '',
@@ -131,9 +135,7 @@ const Signup = (props) => {
               fullWidth
               variant="contained"
               color="secondary"
-              onClick={() => {
-                history.push('/login');
-              }}
+              onClick={() => setShowLogin(true)}
             >
               Sign In
             </Button>
