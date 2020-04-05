@@ -19,6 +19,10 @@ const useStyles = makeStyles((theme) => ({
   rootGrey: {
     flexGrow: 1,
     overflow: 'hidden',
+    padding: '0 20px',
+  },
+  images: {
+    float: 'right',
   },
 }));
 
@@ -36,7 +40,7 @@ const Home = () => {
     );
   } else {
     return (
-      <>
+      <Box>
         <Paper className={classes.rootGrey}>
           <Box m="auto" py={20} className={classes.box}>
             <Grid container spacing={4}>
@@ -78,7 +82,13 @@ const Home = () => {
                   is easy.
                 </Typography>
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid
+                container
+                alignItems="center"
+                justify="center"
+                xs={12}
+                sm={6}
+              >
                 <img
                   src={DoctorsImage}
                   alt={'doctors'}
@@ -104,18 +114,29 @@ const Home = () => {
                 <Typography variant={'body1'}>
                   Log in to COVIDoc and click ‘’Add my symptoms’’ button. Simply
                   enter your symptoms on a scale from 1 to 5 and a short
-                  description of your medical request or current status. The app
-                  uses your data in order to create infographics, discover
-                  specific patterns in regards to your health evolution during
-                  the COVID-19 period and informs you in case there is a further
-                  step to be taken, either sending a COVID-19 test, connect you
-                  with one of the doctors available, send a GP, or connect you
-                  with the closest hospital in your area. The appointments are
-                  covered through your health card and you will be assigned to a
-                  hospital/doctor accordingly based on space availability.
+                  description of your medical request or current status.
+                  <br />
+                  <br />
+                  The app uses your data in order to create infographics,
+                  discover specific patterns in regards to your health evolution
+                  during the COVID-19 period and informs you in case there is a
+                  further step to be taken, either sending a COVID-19 test,
+                  connect you with one of the doctors available, send a GP, or
+                  connect you with the closest hospital in your area.
+                  <br />
+                  <br />
+                  The appointments are covered through your health card and you
+                  will be assigned to a hospital/doctor accordingly based on
+                  space availability.
                 </Typography>
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid
+                container
+                justify="center"
+                alignItems="center"
+                xs={12}
+                sm={6}
+              >
                 <img
                   src={NeedleImage}
                   alt={'fight'}
@@ -141,17 +162,28 @@ const Home = () => {
                 <Typography variant={'body1'}>
                   Once a doctor reviews your symptoms, depending on your answers
                   about current health conditions, they can assist you through
-                  our app. If they are available, you will be contacted through
-                  a notification that will require your personal approval to
-                  continue in receiving the diagnostic. If the symptoms are
-                  considered as normal, and they won’t in any case put your
-                  current health condition in danger, or do not seem to predict
-                  an evolution of the potential virus, then you will receive a
-                  notification stating that everything is fine and that the
-                  monitoring process will still be ongoing.
+                  our app.
+                  <br />
+                  <br />
+                  If they are available, you will be contacted through a
+                  notification that will require your personal approval to
+                  continue in receiving the diagnostic.
+                  <br />
+                  <br />
+                  If the symptoms are considered as normal, and they won’t in
+                  any case put your current health condition in danger, or do
+                  not seem to predict an evolution of the potential virus, then
+                  you will receive a notification stating that everything is
+                  fine and that the monitoring process will still be ongoing.
                 </Typography>
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid
+                container
+                alignItems="center"
+                justify="center"
+                xs={12}
+                sm={6}
+              >
                 <img
                   src={CovidocImage}
                   alt={'covidoc'}
@@ -164,7 +196,7 @@ const Home = () => {
             </Grid>
           </Box>
         </Paper>
-      </>
+      </Box>
     );
   }
 };
