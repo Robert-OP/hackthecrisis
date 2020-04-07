@@ -16,7 +16,7 @@ import {
 } from '@material-ui/core/';
 import { useHistory } from 'react-router-dom';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   backButton: {
     marginRight: theme.spacing(1),
   },
@@ -30,11 +30,12 @@ function getSteps() {
   return ['Personal', 'Health', 'Overview'];
 }
 
-const ScreeningForm = (props) => {
+const ScreeningForm = props => {
   const { handleAuth } = props;
   handleAuth(true);
   const history = useHistory();
-
+  const classes = useStyles();
+  const [activeStep, setActiveStep] = React.useState(0);
   const [form, setForm] = React.useState({
     postalCode: '',
     birthYear: '',
@@ -46,13 +47,25 @@ const ScreeningForm = (props) => {
     ilnesses: '',
   });
 
-  const handleChange = (prop) => (event) => {
+  const handleChange = prop => event => {
     setForm({ ...form, [prop]: event.target.value });
   };
-  const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
 
-  const getStepContent = (stepIndex) => {
+  const steps = getSteps();
+
+  const handleNext = () => {
+    if (activeStep === 2) {
+      props.handleScreening(false);
+      history.push('/dashboard');
+    }
+    setActiveStep(prevActiveStep => prevActiveStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep(prevActiveStep => prevActiveStep - 1);
+  };
+
+  const getStepContent = stepIndex => {
     switch (stepIndex) {
       case 0:
         return (
@@ -382,24 +395,10 @@ const ScreeningForm = (props) => {
     }
   };
 
-  const steps = getSteps();
-
-  const handleNext = () => {
-    if (activeStep === 2) {
-      props.handleScreening(false);
-      history.push('/dashboard');
-    }
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
   return (
     <Box>
       <Stepper activeStep={activeStep} alternativeLabel>
-        {steps.map((label) => (
+        {steps.map(label => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
           </Step>
@@ -426,8 +425,6 @@ const ScreeningForm = (props) => {
               <Button variant="contained" color="primary" onClick={handleNext}>
                 {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
               </Button>
-              <br />
-              <br />
               <br />
               <br />
               <br />
